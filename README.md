@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is the default theme for [Resume CLI](https://github.com/ansidev/resume-theme-default).
+This is the default theme for [Resume CLI](https://github.com/ansidev/resume-cli).
 
 ## Getting started
 
