@@ -15,7 +15,7 @@ Please checkout an [example project](https://github.com/ansidev/resume-cli-examp
 ```
 |-- assets
 |   |-- css
-|       |-- input.css: Resume CSS styles.
+|       |-- resume.css: Resume CSS styles.
 |       |-- styles.css: Generated file. DO NOT EDIT.
 |-- helpers.go: helper functions.
 |-- partials: partial files.
