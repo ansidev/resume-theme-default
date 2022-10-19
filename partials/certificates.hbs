@@ -1,0 +1,25 @@
+{{#if resume.certificates}}
+<section class="section">
+  <h4 class="section-title">Certificates and Courses</h4>
+
+  <div class="section-content">
+    {{#resume.certificates}}
+    <div class="section" style="margin-bottom: 0;">
+      <div class="section-header">
+        <p class="certificate mb-0">
+          {{#if url}}<a href="{{url}}" target="_blank">{{/if}}{{name}}{{#if url}}</a>{{/if}}
+        </p>
+        <div class="flex justify-end">
+          <p class="issuer justify-self-end mb-0">
+            <span>{{issuer}}</span>
+          </p>
+          <p class="mb-0">
+            <span class="time pl-3">{{year date}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    {{/resume.certificates}}
+  </div>
+</section>
+{{/if}}

@@ -1,0 +1,5 @@
+{{#resume.basics}}
+{{#if location}}<span class="location">{{bootstrapIcon 'geo-alt-fill'}}{{location.city}}, {{location.countryCode}}</span>&nbsp;|&nbsp;{{/if}}
+{{#if email}}<span class="email">{{bootstrapIcon 'envelope-fill'}}<a href="mailto:{{email}}">{{email}}</a></span>&nbsp;|&nbsp;{{/if}}
+{{#if phone}}<span class="phone">{{bootstrapIcon 'telephone-fill'}}</i><a href="tel:{{phone}}">{{phone}}</a></span>&nbsp;|&nbsp;{{/if}}
+{{/resume.basics}}

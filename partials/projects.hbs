@@ -1,0 +1,39 @@
+{{#if resume.projects}}
+<section class="section mb-3">
+  <h4 class="section-title mb-3">
+    {{bootstrapIcon 'archive-fill'}}Projects
+  </h4>
+
+  <div class="section-content">
+    {{#resume.projects}}
+    <div class="d-flex flex-column">
+      <div class="d-flex justify-content-between">
+        <h5 class="project-name">{{#if repositoryUrl}}<a href="{{repositoryUrl}}" target="_blank">{{/if}}{{name}}{{#if
+            repositoryUrl}}</a>{{/if}}{{#if type}} - {{type}}{{/if}}
+        </h5>
+        <div class="time fst-italic">{{year startDate}} - {{year endDate}}</div>
+      </div>
+      {{#if url}}<h6 class="project-url"><a href="{{url}}" target="_blank">{{url}}</a></h6>{{/if}}
+      {{#if roles}}
+      <p class="roles">Roles:&nbsp;{{joinArray roles}}</p>
+      {{/if}}
+      <div class="project-description">
+        {{#markdown}}{{description}}{{/markdown}}
+
+        {{#if highlights}}
+        <ul>
+          {{#each highlights}}
+          <li class="highlight">{{this}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </div>
+      {{#if keywords}}
+      <p class="keywords">Keywords:&nbsp;{{joinArray keywords}}.</p>
+      {{/if}}
+    </div>
+    {{/resume.projects}}
+  </div>
+</section>
+<!--//section-->
+{{/if}}

@@ -1,0 +1,53 @@
+/*
+ * Theme Name: Default
+ * Version: 1.0
+ * Author: Le Minh Tri
+ * Twitter: @ansidev
+ * License: Creative Commons Attribution 4.0 License
+ * Website: https://ansidev.xyz/
+*/
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#resume.container {
+  max-width: 796.8px;
+  position: relative;
+  margin: 0 auto;
+}
+
+a {
+  @apply text-blue-500;
+}
+
+ul {
+  @apply list-disc pl-4;
+}
+
+.section {
+  @apply mb-1;
+}
+
+.section-header {
+@apply flex justify-between;
+}
+
+.section-header h5 {
+  @apply mb-0;
+}
+
+.section-title {
+  @apply font-semibold bg-black text-white border-b border-black mb-1 -mx-4 pl-4;
+}
+
+.details p, .details ul {
+  @apply mb-1;
+}
+
+@media print {
+  html {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,32 @@
+{{#if resume.education}}
+<section class="section">
+  <h4 class="section-title">Education</h4>
+
+  <div class="section-content">
+    {{#resume.education}}
+    <div class="section">
+      <div class="section-header">
+        <h5 class="degree font-semibold">
+          {{studyType}}'s Degree
+        </h5>
+        <h5 class="institution font-semibold">
+          {{#if url}}<a href="{{url}}" target="_blank">{{/if}}{{institution}}{{#if url}}</a>{{/if}}
+        </h5>
+        <h5>
+          <span class="location italic font-semibold">{{#if location}}{{location}}{{/if}}</span>
+          <span class="time pl-3 font-semibold">{{year startDate}} - {{year endDate}}</span>
+        </h5>
+      </div>
+      <ul>
+        <li class="major">
+          Major in {{major}}
+          {{#resume.secretCode}}
+          <span class="secret-code text-yellow-500 print:text-white">&nbsp{{this}}</span>
+          {{/resume.secretCode}}
+        </li>
+      </ul>
+    </div>
+    {{/resume.education}}
+  </div>
+</section>
+{{/if}}

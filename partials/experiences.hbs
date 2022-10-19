@@ -1,0 +1,35 @@
+{{#if resume.work}}
+<section class="section">
+  <h4 class="section-title">Experience</h4>
+
+  <div class="section-content">
+    {{#resume.work}}
+    <div class="section">
+      <div class="section-header">
+        <h5 class="job-title font-semibold">
+          {{position}}
+        </h5>
+        <h5 class="company font-semibold">
+          {{#if url}}<a href="{{url}}" target="_blank">{{/if}}{{companyName}}{{#if url}}</a>{{/if}}
+        </h5>
+        <h5>
+          <span class="location italic font-semibold">{{#if location}}{{location}}{{/if}}</span>
+          <span class="time pl-3 font-semibold">{{year startDate}} - {{year endDate}}</span>
+        </h5>
+      </div>
+      <div class="details">
+        {{#markdown}}{{summary}}{{/markdown}}
+
+        {{#if highlights}}
+        <ul>
+          {{#each highlights}}
+          <li class="highlight">{{this}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </div>
+    </div>
+    {{/resume.work}}
+  </div>
+</section>
+{{/if}}

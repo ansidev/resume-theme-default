@@ -1,0 +1,7 @@
+{{#resume.basics}}
+{{#if url}}<span class="website"><i class="fa fa-globe"></i><a href="{{url}}" target="_blank">{{trimPrefix url 8}}</a></span>&nbsp;|&nbsp;{{/if}}
+{{#each profiles}}
+<span class="{{toLowerCase network}}"><i class="fa fa-{{toLowerCase network}}"></i><a href="{{url}}"
+    target="_blank">{{network}}</a></span>{{> 'partials/separator' }}
+{{/each}}
+{{/resume.basics}}

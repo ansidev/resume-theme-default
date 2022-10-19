@@ -1,0 +1,21 @@
+{{#if resume.groupSkills}}
+<section class="section">
+  <h4 class="section-title">Skills</h4>
+  <div class="section-content mb-3">
+    <ul class="list-disc">
+      {{#each resume.groupSkills}}
+      <li>
+        {{#each this}}
+        <span class="skill">{{name}}</span>{{> 'partials/separator' }}
+        {{/each}}
+      </li>
+      {{/each}}
+      <li>
+        {{#resume.languages}}
+        <span class="language">{{language}}</span>&nbsp;<span class="lang-desc">({{fluency}})</span>{{> 'partials/separator' }}
+        {{/resume.languages}}
+      </li>
+    </ul>
+  </div>
+</section>
+{{/if}}
