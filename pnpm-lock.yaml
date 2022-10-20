@@ -3,13 +3,11 @@ lockfileVersion: 5.4
 specifiers:
   autoprefixer: ^10.4.12
   postcss: ^8.4.18
-  sailui: ^0.7.0
   tailwindcss: ^3.1.8
 
 devDependencies:
   autoprefixer: 10.4.12_postcss@8.4.18
   postcss: 8.4.18
-  sailui: 0.7.0_gfmmcdwqaatn73onu3xuay5ecu
   tailwindcss: 3.1.8_postcss@8.4.18
 
 packages:
@@ -33,15 +31,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
-    dev: true
-
-  /@tailwindcss/forms/0.4.1_tailwindcss@3.1.8:
-    resolution: {integrity: sha512-gS9xjCmJjUBz/eP12QlENPLnf0tCx68oYE3mri0GMP5jdtVwLbGUNSRpjsp6NzLAZzZy3ueOwrcqB78Ax6Z84A==}
-    peerDependencies:
-      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
-    dependencies:
-      mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.1.8_postcss@8.4.18
     dev: true
 
   /acorn-node/1.8.2:
@@ -288,11 +277,6 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /mini-svg-data-uri/1.4.4:
-    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
-    hasBin: true
-    dev: true
-
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
@@ -452,20 +436,6 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
-  /sailui/0.7.0_gfmmcdwqaatn73onu3xuay5ecu:
-    resolution: {integrity: sha512-310BVBqajtW9BHp+uP0gkk+kps8FGRsemIfHfQrFMGunEWxzBddPOY0Ne84e/VvHXiHfKjA1BmZ/YrkBFWG41A==}
-    peerDependencies:
-      autoprefixer: ^10.0.2
-      postcss: ^8.0.9
-      tailwindcss: ^3.0.0
-    dependencies:
-      '@tailwindcss/forms': 0.4.1_tailwindcss@3.1.8
-      autoprefixer: 10.4.12_postcss@8.4.18
-      postcss: 8.4.18
-      tailwindcss: 3.1.8_postcss@8.4.18
-      tinycolor2: 1.4.2
-    dev: true
-
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -507,10 +477,6 @@ packages:
       resolve: 1.22.1
     transitivePeerDependencies:
       - ts-node
-    dev: true
-
-  /tinycolor2/1.4.2:
-    resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==}
     dev: true
 
   /to-regex-range/5.0.1:
