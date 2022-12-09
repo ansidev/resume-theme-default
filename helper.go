@@ -1,12 +1,13 @@
 package simple
 
 import (
+	"bytes"
 	"regexp"
 	"strings"
 	"time"
 
 	"github.com/aymerick/raymond"
-	"github.com/russross/blackfriday/v2"
+	"github.com/yuin/goldmark"
 )
 
 func trimPrefixHelper(s string, i int) raymond.SafeString {
@@ -22,8 +23,12 @@ func joinArrayHelper(arr []string) raymond.SafeString {
 }
 
 func markdownHelper(options *raymond.Options) raymond.SafeString {
-	markdown := blackfriday.Run([]byte(options.Fn()))
-	return raymond.SafeString(markdown)
+	var buf bytes.Buffer
+	err := goldmark.Convert([]byte(options.Fn()), &buf)
+	if err != nil {
+		return raymond.SafeString("")
+	}
+	return raymond.SafeString(buf.String())
 }
 
 func displayUrlHelper(str string) raymond.SafeString {
