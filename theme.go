@@ -8,7 +8,7 @@ func LoadThemeConfig() config.ThemeConfig {
 	return config.ThemeConfig{
 		ThemeBaseDir: "themes",
 		Funcs: map[string]interface{}{
-			"trimPrefix":     trimPrefixHelper,
+			"trimPrefix":    trimPrefixHelper,
 			"bootstrapIcon": bootstrapIconHelper,
 			"joinArray":     joinArrayHelper,
 			"markdown":      markdownHelper,
