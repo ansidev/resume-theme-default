@@ -3,10 +3,9 @@
  * Version: 1.0
  * Author: Le Minh Tri
  * Twitter: @ansidev
- * License: Creative Commons Attribution 4.0 License
+ * License: AGPL-3.0
  * Website: https://ansidev.xyz/
 */
-
 
 @tailwind base;
 @tailwind components;
@@ -31,7 +30,7 @@ ul {
 }
 
 .section-header {
-@apply flex justify-between;
+  @apply flex justify-between;
 }
 
 .section-header h5 {
@@ -42,7 +41,8 @@ ul {
   @apply font-semibold bg-black text-white border-b border-black mb-1 -mx-4 pl-4;
 }
 
-.details p, .details ul {
+.details p,
+.details ul {
   @apply mb-1;
 }
 
