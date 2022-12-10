@@ -13,16 +13,19 @@ Please checkout an [example project](https://github.com/ansidev/resume-cli-examp
 ### Theme structure
 
 ```
-|-- assets
-|   |-- css
-|       |-- resume.css: Resume CSS styles.
-|       |-- styles.css: Generated file. DO NOT EDIT.
-|-- helpers.go: helper functions.
-|-- partials: partial files.
-|-- resume.hbs: Main resume template.
-|-- tailwind.config.js: TailwindCSS config file.
+|-- resources: view files
+|   |-- assets
+|   |   |-- css
+|   |   |   |-- styles.css
+|   |   |-- js
+|   |       |-- scripts.js
+|   |-- partials: partial files
+|   |-- resume.{template_extension}: file extension depends on the used template engine.
+|-- helpers.go: helper functions
 |-- theme.go
 |-- theme_test.go
+|-- go.mod
+|-- go.sum
 ```
 
 ## Contact
