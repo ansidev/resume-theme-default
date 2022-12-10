@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["resume.hbs", "./partials/**/*.hbs"],
+  content: ["resources/resume.hbs", "resources/partials/**/*.hbs"],
   theme: {
     extend: {
       listStyleType: {
