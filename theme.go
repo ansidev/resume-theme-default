@@ -1,12 +1,19 @@
 package theme
 
 import (
+	"embed"
+
 	"github.com/ansidev/resume-cli/config"
 )
 
+//go:embed resources
+var themeResources embed.FS
+
 func LoadThemeConfig() config.ThemeConfig {
 	return config.ThemeConfig{
-		ThemeBaseDir: "themes",
+		TemplateEngine: "handlebars",
+		Embed:          true,
+		ThemeResources: themeResources,
 		Funcs: map[string]interface{}{
 			"trimPrefix":    trimPrefixHelper,
 			"bootstrapIcon": bootstrapIconHelper,
