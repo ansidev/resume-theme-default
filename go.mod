@@ -3,7 +3,7 @@ module github.com/ansidev/resume-theme-default
 go 1.19
 
 require (
-	github.com/ansidev/resume-cli v0.0.0-20221210071926-476a4acbd37a
+	github.com/ansidev/resume-cli v0.0.0-20221210081957-5a524f02dc1c
 	github.com/aymerick/raymond v2.0.2+incompatible
 	github.com/yuin/goldmark v1.5.3
 )
