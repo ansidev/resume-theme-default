@@ -1,4 +1,4 @@
-package simple
+package theme
 
 import (
 	"github.com/ansidev/resume-cli/config"
