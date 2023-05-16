@@ -8,6 +8,20 @@ import (
 
 	"github.com/aymerick/raymond"
 	"github.com/yuin/goldmark"
+	"github.com/yuin/goldmark/extension"
+	"github.com/yuin/goldmark/parser"
+	"github.com/yuin/goldmark/renderer/html"
+)
+
+var md = goldmark.New(
+	goldmark.WithExtensions(extension.GFM),
+	goldmark.WithParserOptions(
+		parser.WithAutoHeadingID(),
+	),
+	goldmark.WithRendererOptions(
+		html.WithXHTML(),
+		html.WithUnsafe(),
+	),
 )
 
 func trimPrefixHelper(s string, i int) raymond.SafeString {
@@ -22,9 +36,9 @@ func joinArrayHelper(arr []string) raymond.SafeString {
 	return raymond.SafeString(strings.Join(arr, ", "))
 }
 
-func markdownHelper(options *raymond.Options) raymond.SafeString {
+func markdownHelper(s string) raymond.SafeString {
 	var buf bytes.Buffer
-	err := goldmark.Convert([]byte(options.Fn()), &buf)
+	err := md.Convert([]byte(s), &buf)
 	if err != nil {
 		return raymond.SafeString("")
 	}
