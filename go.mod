@@ -3,7 +3,7 @@ module github.com/ansidev/resume-theme-default
 go 1.19
 
 require (
-	github.com/ansidev/resume-cli v0.0.0-20230227061050-5d2606ac44cb
+	github.com/ansidev/resume-cli v0.0.0-20230517035918-267ba29f671c
 	github.com/aymerick/raymond v2.0.2+incompatible
 	github.com/yuin/goldmark v1.5.4
 )
@@ -11,7 +11,7 @@ require (
 require (
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
-	github.com/urfave/cli/v2 v2.24.4 // indirect
+	github.com/urfave/cli/v2 v2.25.3 // indirect
 	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
