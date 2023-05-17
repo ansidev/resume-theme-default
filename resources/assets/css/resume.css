@@ -26,7 +26,7 @@ ul {
 }
 
 .section {
-  @apply mb-1;
+  @apply mb-3;
 }
 
 .section-header {
@@ -41,13 +41,29 @@ ul {
   @apply font-semibold bg-black text-white border-b border-black mb-1 -mx-4 pl-4;
 }
 
+.section-content {
+  @apply mb-3;
+}
+
 .details p,
 .details ul {
   @apply mb-1;
 }
 
+.time,
+.issuer {
+  @apply font-semibold;
+}
+
+.secret-code {
+  @apply text-yellow-500;
+}
+
 @media print {
   html {
     font-size: 14px;
+  }
+  .secret-code {
+    @apply text-white;
   }
 }
