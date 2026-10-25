@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aymerick/raymond"
+	"github.com/mailgun/raymond/v2"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
