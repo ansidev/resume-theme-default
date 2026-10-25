@@ -10,9 +10,41 @@ This is the default theme for [Resume CLI](https://github.com/ansidev/resume-cli
 
 Please checkout an [example project](https://github.com/ansidev/resume-cli-example) to understand how to use this tool.
 
+### Theme config
+
+Configure the theme in the Resume CLI config file (`resume.config.yaml`):
+
+```yaml
+theme:
+  type: local # local | remote
+  location: ./themes/resume-theme-default # local: path to the theme folder; remote: git URL
+```
+
+- `local`: `location` is the path to this theme folder.
+- `remote`: `location` is the git URL of this theme, e.g. `https://github.com/ansidev/resume-theme-default`.
+- `--theme` overrides `theme.location`.
+
+The template engine and helpers are declared by this theme in [`theme.yaml`](/theme.yaml); they are not set in the
+Resume CLI config.
+
+### Helper functions
+
+[`helper.go`](/helper.go) is interpreted by Resume CLI at runtime (with [yaegi](https://github.com/traefik/yaegi)).
+Its `Funcs() map[string]interface{}` function returns the template helpers: `trimPrefix`, `bootstrapIcon`, `joinArray`,
+`markdown`, `displayUrl`, `toLowerCase` and `year`. The file must stay self-contained (single file, standard library,
+`github.com/mailgun/raymond/v2` and `github.com/yuin/goldmark` only).
+
+> **Security:** helper code runs with the full privileges of the CLI process. It runs automatically for `local` themes.
+> For a `remote` theme, Resume CLI refuses to run it unless you review `helper.go` and pass `--allow-remote-helpers`:
+>
+> ```
+> resume generate --allow-remote-helpers
+> ```
+
 ### Theme structure
 
 ```
+|-- theme.yaml: theme manifest (name, templateEngine, helpers)
 |-- resources: view files
 |   |-- assets
 |   |   |-- css
@@ -21,9 +53,8 @@ Please checkout an [example project](https://github.com/ansidev/resume-cli-examp
 |   |       |-- scripts.js
 |   |-- partials: partial files
 |   |-- resume.{template_extension}: file extension depends on the used template engine.
-|-- helpers.go: helper functions
-|-- theme.go
-|-- theme_test.go
+|-- helper.go: helper functions (entry point: Funcs)
+|-- helper_test.go
 |-- go.mod
 |-- go.sum
 ```

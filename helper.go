@@ -66,3 +66,16 @@ func yearHelper(str string) raymond.SafeString {
 
 	return raymond.SafeString(d.Format("01/2006"))
 }
+
+// Funcs is the entry point interpreted by Resume CLI (yaegi).
+func Funcs() map[string]interface{} {
+	return map[string]interface{}{
+		"trimPrefix":    trimPrefixHelper,
+		"bootstrapIcon": bootstrapIconHelper,
+		"joinArray":     joinArrayHelper,
+		"markdown":      markdownHelper,
+		"displayUrl":    displayUrlHelper,
+		"toLowerCase":   toLowerCaseHelper,
+		"year":          yearHelper,
+	}
+}
