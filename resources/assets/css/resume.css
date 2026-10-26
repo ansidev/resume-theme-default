@@ -7,9 +7,10 @@
  * Website: https://ansidev.xyz/
 */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@source "../../resume.hbs";
+@source "../../partials/**/*.hbs";
 
 #resume.container {
   max-width: 796.8px;
