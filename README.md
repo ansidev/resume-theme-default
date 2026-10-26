@@ -29,13 +29,13 @@ Resume CLI config.
 
 ### Helper functions
 
-[`helper.go`](/helper.go) is interpreted by Resume CLI at runtime (with [yaegi](https://github.com/traefik/yaegi)).
+[`helpers.go`](/helpers.go) is interpreted by Resume CLI at runtime (with [yaegi](https://github.com/traefik/yaegi)).
 Its `Funcs() map[string]interface{}` function returns the template helpers: `trimPrefix`, `bootstrapIcon`, `joinArray`,
 `markdown`, `displayUrl`, `toLowerCase` and `year`. The file must stay self-contained (single file, standard library,
 `github.com/mailgun/raymond/v2` and `github.com/yuin/goldmark` only).
 
 > **Security:** helper code runs with the full privileges of the CLI process. It runs automatically for `local` themes.
-> For a `remote` theme, Resume CLI refuses to run it unless you review `helper.go` and pass `--allow-remote-helpers`:
+> For a `remote` theme, Resume CLI refuses to run it unless you review `helpers.go` and pass `--allow-remote-helpers`:
 >
 > ```
 > resume generate --allow-remote-helpers
@@ -53,8 +53,8 @@ Its `Funcs() map[string]interface{}` function returns the template helpers: `tri
 |   |       |-- scripts.js
 |   |-- partials: partial files
 |   |-- resume.{template_extension}: file extension depends on the used template engine.
-|-- helper.go: helper functions (entry point: Funcs)
-|-- helper_test.go
+|-- helpers.go: helper functions (entry point: Funcs)
+|-- helpers_test.go
 |-- go.mod
 |-- go.sum
 ```
