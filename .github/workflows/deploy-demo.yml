@@ -1,0 +1,67 @@
+name: Build and deploy demo
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: cloudflare-pages-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy demo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Download the latest Resume CLI release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p bin
+          gh release download --repo ansidev/resume-cli-ce --pattern 'resume-cli_*_linux_amd64.tar.gz' --pattern checksums.txt --dir bin --clobber
+          (cd bin && grep 'linux_amd64.tar.gz' checksums.txt | sha256sum --check -)
+          tar --extract --gzip --file bin/resume-cli_*_linux_amd64.tar.gz --directory bin resume-cli
+          chmod +x bin/resume-cli
+          bin/resume-cli version
+
+      - name: Generate demo resume
+        run: |
+          set -euo pipefail
+          mkdir -p dist/static
+          bin/resume-cli generate --config demo/resume.config.yaml --format html --minify --output dist/index.html
+          bin/resume-cli generate --config demo/resume.config.yaml --format pdf --output dist/static/resume.pdf
+          test -s dist/index.html
+          test -s dist/static/resume.pdf
+          test "$(head -c 4 dist/static/resume.pdf)" = '%PDF'
+
+      - name: Upload generated demo
+        uses: actions/upload-artifact@v6
+        with:
+          name: resume-demo
+          path: dist/
+
+      - name: Check Cloudflare Pages configuration
+        if: github.event_name != 'pull_request'
+        env:
+          PROJECT_NAME: ${{ vars.CLOUDFLARE_PAGES_PROJECT_NAME }}
+        run: test -n "$PROJECT_NAME" || { echo '::error::Set the CLOUDFLARE_PAGES_PROJECT_NAME Actions variable'; exit 1; }
+
+      - name: Deploy to Cloudflare Pages
+        if: github.event_name != 'pull_request'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT_NAME }}
+          gitHubToken: ${{ github.token }}

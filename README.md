@@ -59,6 +59,31 @@ Its `Funcs() map[string]interface{}` function returns the template helpers: `tri
 |-- go.sum
 ```
 
+## Demo deployment
+
+The [demo configuration](demo/resume.config.yaml) is copied from Resume CLI's
+sample configuration. GitHub Actions builds it with the latest published
+[`resume-cli`](https://github.com/ansidev/resume-cli-ce) release and deploys
+the resulting site to Cloudflare Pages on pushes to `main` (or when started
+manually). Pull requests only build the demo and upload it as an artifact.
+
+The demo config uses `theme.location: .`, so run `resume-cli generate
+--config demo/resume.config.yaml` from the repository root.
+
+Before enabling the workflow, configure these repository values in GitHub:
+
+- `CLOUDFLARE_API_TOKEN` secret: an API token with **Account → Cloudflare
+  Pages → Edit** permission.
+- `CLOUDFLARE_ACCOUNT_ID` secret: the Cloudflare account ID that owns the
+  Pages project.
+- `CLOUDFLARE_PAGES_PROJECT_NAME` Actions variable: the existing Cloudflare
+  Pages project name.
+
+The workflow uses this local theme checkout and produces:
+
+- `dist/index.html`
+- `dist/static/resume.pdf`
+
 ## Contact
 
 Le Minh Tri [@ansidev](https://ansidev.xyz/about).
