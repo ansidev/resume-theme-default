@@ -39,7 +39,7 @@ resume:
       network: twitter
     - url: https://github.com/thomasdavis
       network: github
-    - url: /static/resume.pdf
+    - url: https://resume-theme-default-demo.pages.dev/static/resume.pdf
       network: PDF resume
   education:
   - endDate: '2009-12-12'
