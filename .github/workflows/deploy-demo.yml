@@ -38,6 +38,8 @@ jobs:
       - name: Generate demo resume
         run: |
           set -euo pipefail
+          # Ubuntu 24.04 blocks the unprivileged user namespaces Chrome's sandbox needs.
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
           mkdir -p dist/static
           bin/resume-cli generate --config demo/resume.config.yaml --format html --minify --output dist/index.html
           bin/resume-cli generate --config demo/resume.config.yaml --format pdf --output dist/static/resume.pdf
