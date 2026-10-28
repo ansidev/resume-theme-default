@@ -38,7 +38,7 @@ Its `Funcs() map[string]interface{}` function returns the template helpers: `tri
 > For a `remote` theme, Resume CLI refuses to run it unless you review `helpers.go` and pass `--allow-remote-helpers`:
 >
 > ```
-> resume generate --allow-remote-helpers
+> resume-cli generate --allow-remote-helpers
 > ```
 
 ### Theme structure
