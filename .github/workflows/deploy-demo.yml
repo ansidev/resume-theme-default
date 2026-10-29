@@ -47,7 +47,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p bin
-          gh release download --repo ansidev/resume-cli-ce --tag "$RELEASE_TAG" --pattern 'resume-cli_*_linux_amd64.tar.gz' --pattern checksums.txt --dir bin --clobber
+          gh release download "$RELEASE_TAG" --repo ansidev/resume-cli-ce --pattern 'resume-cli_*_linux_amd64.tar.gz' --pattern checksums.txt --dir bin --clobber
           (cd bin && grep 'linux_amd64.tar.gz' checksums.txt | sha256sum --check -)
           tar --extract --gzip --file bin/resume-cli_*_linux_amd64.tar.gz --directory bin resume-cli
           chmod +x bin/resume-cli
