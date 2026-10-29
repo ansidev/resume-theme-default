@@ -1,14 +1,42 @@
 # Resume Theme Default
 
+[![Build](https://github.com/ansidev/resume-theme-default/actions/workflows/deploy-demo.yml/badge.svg)](https://github.com/ansidev/resume-theme-default/actions/workflows/deploy-demo.yml)
+
 ## Introduction
 
-This is the default theme for [Resume CLI](https://github.com/ansidev/resume-cli).
+This is the default theme for [Resume CLI](https://github.com/ansidev/resume-cli-ce).
 
 ## Getting started
 
+### Installation
+
+Download the latest `resume-cli` release from [ansidev/resume-cli-ce](https://github.com/ansidev/resume-cli-ce/releases).
+
 ### How to use?
 
-Please checkout an [example project](https://github.com/ansidev/resume-cli-example) to understand how to use this tool.
+Create a `resume.config.yaml` in your project:
+
+```yaml
+theme:
+  type: remote
+  location: https://github.com/ansidev/resume-theme-default.git
+resume:
+  basics:
+    name: Your Name
+    # ... see demo/resume.config.yaml for the full structure
+```
+
+Then generate your resume:
+
+```bash
+# HTML
+resume-cli generate --format html --output dist/index.html
+
+# PDF
+resume-cli generate --format pdf --output dist/static/resume.pdf
+```
+
+See [`demo/resume.config.yaml`](demo/resume.config.yaml) for a complete working example. The live demo is published at https://resume-theme-default-demo.pages.dev.
 
 ### Theme config
 
