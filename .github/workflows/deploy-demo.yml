@@ -23,17 +23,37 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v6
 
-      - name: Download the latest Resume CLI release
+      - name: Get latest Resume CLI version
+        id: cli-version
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          version=$(gh release view --repo ansidev/resume-cli-ce --json tagName -q .tagName)
+          echo "tag=${version}" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Resume CLI binary
+        id: cache-cli
+        if: github.event_name != 'pull_request'
+        uses: actions/cache@v4
+        with:
+          path: bin/resume-cli
+          key: resume-cli-${{ steps.cli-version.outputs.tag }}-linux-amd64
+
+      - name: Download the latest Resume CLI release
+        if: steps.cache-cli.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.cli-version.outputs.tag }}
+        run: |
           set -euo pipefail
           mkdir -p bin
-          gh release download --repo ansidev/resume-cli-ce --pattern 'resume-cli_*_linux_amd64.tar.gz' --pattern checksums.txt --dir bin --clobber
+          gh release download "$RELEASE_TAG" --repo ansidev/resume-cli-ce --pattern 'resume-cli_*_linux_amd64.tar.gz' --pattern checksums.txt --dir bin --clobber
           (cd bin && grep 'linux_amd64.tar.gz' checksums.txt | sha256sum --check -)
           tar --extract --gzip --file bin/resume-cli_*_linux_amd64.tar.gz --directory bin resume-cli
           chmod +x bin/resume-cli
-          bin/resume-cli version
+
+      - name: Verify Resume CLI binary
+        run: bin/resume-cli version
 
       - name: Generate demo resume
         run: |
