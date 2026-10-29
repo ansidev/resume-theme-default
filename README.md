@@ -14,12 +14,12 @@ Download the latest `resume-cli` release from [ansidev/resume-cli-ce](https://gi
 
 ### How to use?
 
-Create a `resume.config.yaml` in your project:
+Create a `resume.config.yaml` in your project. Choose `local` if you have cloned this theme, or `remote` to let Resume CLI fetch it automatically:
 
 ```yaml
 theme:
-  type: remote
-  location: https://github.com/ansidev/resume-theme-default.git
+  type: remote                                        # or: local
+  location: https://github.com/ansidev/resume-theme-default.git  # or: path/to/theme
 resume:
   basics:
     name: Your Name
@@ -38,22 +38,16 @@ resume-cli generate --format pdf --output dist/static/resume.pdf
 
 See [`demo/resume.config.yaml`](demo/resume.config.yaml) for a complete working example. The live demo is published at https://resume-theme-default-demo.pages.dev.
 
-### Theme config
+> **Remote helpers:** when `type: remote` is set, Resume CLI refuses to run `helpers.go` unless you
+> review the file and pass `--allow-remote-helpers`:
+>
+> ```bash
+> resume-cli generate --allow-remote-helpers
+> ```
+>
+> `local` themes run helpers automatically without the flag.
 
-Configure the theme in the Resume CLI config file (`resume.config.yaml`):
-
-```yaml
-theme:
-  type: local # local | remote
-  location: ./themes/resume-theme-default # local: path to the theme folder; remote: git URL
-```
-
-- `local`: `location` is the path to this theme folder.
-- `remote`: `location` is the git URL of this theme, e.g. `https://github.com/ansidev/resume-theme-default`.
-- `--theme` overrides `theme.location`.
-
-The template engine and helpers are declared by this theme in [`theme.yaml`](/theme.yaml); they are not set in the
-Resume CLI config.
+The `--theme` option overrides `theme.location`. The template engine and helpers are declared by this theme in [`theme.yaml`](/theme.yaml); they are not set in the Resume CLI config.
 
 ### Helper functions
 
@@ -62,12 +56,7 @@ Its `Funcs() map[string]interface{}` function returns the template helpers: `tri
 `markdown`, `displayUrl`, `toLowerCase` and `year`. The file must stay self-contained (single file, standard library,
 `github.com/mailgun/raymond/v2` and `github.com/yuin/goldmark` only).
 
-> **Security:** helper code runs with the full privileges of the CLI process. It runs automatically for `local` themes.
-> For a `remote` theme, Resume CLI refuses to run it unless you review `helpers.go` and pass `--allow-remote-helpers`:
->
-> ```
-> resume-cli generate --allow-remote-helpers
-> ```
+> **Security:** helper code runs with the full privileges of the CLI process. It runs automatically for `local` themes. For `remote` themes, pass `--allow-remote-helpers` as described above.
 
 ### Theme structure
 
