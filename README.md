@@ -1,5 +1,7 @@
 # Resume Theme Default
 
+[![Build](https://github.com/ansidev/resume-theme-default/actions/workflows/deploy-demo.yml/badge.svg)](https://github.com/ansidev/resume-theme-default/actions/workflows/deploy-demo.yml)
+
 ## Introduction
 
 This is the default theme for [Resume CLI](https://github.com/ansidev/resume-cli-ce).
